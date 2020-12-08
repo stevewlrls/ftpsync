@@ -1,0 +1,14 @@
+<!DOCTYPE RCC>
+<RCC version="1.0">
+<qresource>
+   <file>images/upload.png</file>
+   <file>images/download.png</file>
+   <file>images/conflict.png</file>
+   <file>images/settings.png</file>
+   <file>images/reset.png</file>
+   <file>images/search.png</file>
+   <file>images/preview.png</file>
+   <file>images/options.png</file>
+	<file>help.html</file>
+</qresource>
+</RCC>

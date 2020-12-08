@@ -1,0 +1,10 @@
+moc.go
+moc.cpp
+moc.h
+moc_moc.h
+moc_cgo_*
+rcc.cpp
+rcc_cgo_*
+.DS_Store
+deploy/
+vendor/
