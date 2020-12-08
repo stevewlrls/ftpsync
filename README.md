@@ -55,8 +55,8 @@ Using the 'advanced' options for a site, the above list can be edited to add add
 By default, the **ftpsync** program will compute a fingerprint for every file that it finds, with the exclusion of the following:
 
 * Any pattern listed in a '.gitignore' file
-* Any folder called '.DS_Store', '.git', '_vti_cnf' or '_vti_pvt'
-* Any file called 'thumbs.db'
+* Any folder called '.git', '_vti_cnf' or '_vti_pvt'
+* Any file called '.DS_Store' or 'thumbs.db'
 
 The '_vti_*' folders are produced by older Microsoft tools for creating web sites and since they are marked as 'hidden' and are not published to a remote server by those tools, the user is not likely to be aware of their presence.
 
