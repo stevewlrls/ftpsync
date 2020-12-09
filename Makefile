@@ -1,14 +1,20 @@
+#
+# Assumes GNU Make and on Windows assumes standard 'cmd.exe' shell
+
 MACICONS := darwin/Contents/Resources/ftpsync.icns
 PLIST := darwin/Contents/info.plist
 WIX := "C:\Program Files (x86)\WIX Toolset v3.11\bin"
 GO_FILES := main.go $(wildcard app/*.go)
 RESOURCES := $(wildcard res/images/*.png) res/help.html resources.qrc
+CLEAN := $(strip $(wildcard moc*.*) $(wildcard rcc*.*) $(wildcard ftpsync.wix*))
 
 ifeq ($(OS),Windows_NT)
 	PLATFORM := windows
 	EXE := deploy/windows/ftpsync.exe
+	RM := del
 else
 	PLATFORM := $(shell uname | tr A-Z a-z)
+	RM := rm
 	ifeq ($(PLATFORM),darwin)
 		EXE := deploy/darwin/ftpsync.app/Contents/MacOS/ftpsync
 	else
@@ -40,7 +46,7 @@ ftpsync.msi: res/ftpsync.wxs $(EXE)
 	$(WIX)\candle -arch x64 res/ftpsync.wxs
 	$(WIX)\light -ext WixUIExtension ftpsync.wixobj
 
-clean:
-	rm -f moc.go moc.cpp moc.h moc_moc.h moc_cgo_*.go
-	rm -f rcc.cpp rcc_cgo_*.go
-	rm ftpsync.wixobj
+clean: $(CLEAN)
+ifneq ($(CLEAN),)
+	$(RM) $(CLEAN)
+endif

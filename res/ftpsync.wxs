@@ -8,7 +8,7 @@
 			  	Language="1033">
 		<Package InstallerVersion="300" Compressed="yes" />
 		<Media Id="1" Cabinet="ftpsync.cab" EmbedCab="yes" />
-		<Icon Id="ftpsync.ico" SourceFile="ftpsync.ico" />
+		<Icon Id="ftpsync.ico" SourceFile="res/ftpsync.ico" />
 		<Property Id="ARPPRODUCTICON" Value="ftpsync.ico" />
 		<Property Id="WIXUI_INSTALLDIR" Value="INSTALLDIR" />
 	  
@@ -67,6 +67,6 @@
 		
 		<!-- Installer UI -->
 		<UIRef Id="WixUI_InstallDir" />
-		<WixVariable Id="WixUILicenseRtf" Value="license.rtf" />
+		<WixVariable Id="WixUILicenseRtf" Value="res/license.rtf" />
 	</Product>
 </Wix>
