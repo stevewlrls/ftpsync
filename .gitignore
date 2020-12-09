@@ -8,3 +8,4 @@ rcc_cgo_*
 .DS_Store
 deploy/
 vendor/
+darwin/
