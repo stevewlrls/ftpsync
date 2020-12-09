@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<Product Id="*"
+				UpgradeCode="a296de62-c337-417e-8b9d-56dca8848565"
+			  	Name="ftpsync"
+			  	Version="1.0.0"
+			  	Manufacturer="Miran Design"
+			  	Language="1033">
+		<Package InstallerVersion="300" Compressed="yes" />
+		<Media Id="1" Cabinet="ftpsync.cab" EmbedCab="yes" />
+		<Icon Id="ftpsync.ico" SourceFile="ftpsync.ico" />
+		<Property Id="ARPPRODUCTICON" Value="ftpsync.ico" />
+		<Property Id="WIXUI_INSTALLDIR" Value="INSTALLDIR" />
+	  
+		<!-- Target directory structure -->
+		<Directory Id="TARGETDIR" Name="SourceDir">
+			<Directory Id="ProgramFiles64Folder">
+				<Directory Id="INSTALLDIR" Name="FTPSync">
+					<Directory Id="QTPlatformFolder" Name="platforms" />
+				</Directory>
+			</Directory>
+			<Directory Id="ProgramMenuFolder" Name="Programs" />
+		</Directory>
+	  
+		<!-- Files to be installed -->
+		<DirectoryRef Id="INSTALLDIR" FileSource="deploy\windows">
+			<Component Id="ftpsync.exe" Guid="3007c262-7e20-4fe5-a823-b7e09c933344">
+				<File Name="ftpsync.exe" KeyPath="yes" Checksum="yes">
+					<Shortcut Id="StartMenuShortcut"
+								 Name="FTPSync"
+								 Directory="ProgramMenuFolder"
+								 Icon="ftpsync.ico"
+								 Advertise="yes" />
+				</File>
+			</Component>
+			<Component Id="QtBase" Guid="de86d257-e1d9-4520-9587-5d2381c282eb">
+				<File Name="Qt5Core.dll" KeyPath="yes" />
+				<File Name="Qt5Widgets.dll" />
+				<File Name="Qt5Gui.dll" />
+				<File Name="Qt5Qml.dll" />
+				<File Name="Qt5Network.dll" />
+			</Component>
+			<Component Id="MinGWRedist" Guid="4ab13875-319f-425c-8d43-bbcf167060d8">
+				<File Name="libwinpthread-1.dll" KeyPath="yes" />
+				<File Name="libgcc_s_seh-1.dll" />
+				<File Name="libstdc++-6.dll" />
+			</Component>
+		</DirectoryRef>
+		
+		<DirectoryRef Id="QTPlatformFolder" FileSource="deploy\windows\platforms">
+			<Component Id="QtWindows" Guid="51a8a730-e789-4da0-a51a-9a39fa312ca4">
+				<File Name="qwindows.dll" KeyPath="yes" />
+			</Component>
+		</DirectoryRef>
+	  
+		<!-- Features -->
+		<Feature Id="ftpsync"
+					Title="FTPSync"
+					Description="Program and shortcut"
+					Level="1"
+					ConfigurableDirectory="INSTALLDIR">
+			<ComponentRef Id="ftpsync.exe" />
+			<ComponentRef Id="QtBase" />
+			<ComponentRef Id="QtWindows" />
+			<ComponentRef Id="MinGWRedist" />
+		</Feature>
+		
+		<!-- Installer UI -->
+		<UIRef Id="WixUI_InstallDir" />
+		<WixVariable Id="WixUILicenseRtf" Value="license.rtf" />
+	</Product>
+</Wix>

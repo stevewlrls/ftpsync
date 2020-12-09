@@ -1,0 +1,31 @@
+<p>The <b>ftpsync</b> program compares files in a given source directory (and sub-directories) with a supposedly equivalent set on a remote server. These files may, for example, comprise a web site. Any differences are shown in the resulting 'report'. Unlike a plain FTP application, <b>ftpsync</b> compares the file contents, creating a MD5 'fingerprint' for each one. If the local and remote fingerprints match - even if size and modification times are slightly different - the files are assumed to be identical.</p>
+
+<p>To start using the program, you must first define a 'site'. This records information about the local and remote copies. The local copy is defined by a standard file path and the remote copy by a network URL. This latter must include an access 'scheme' that is chosen from one of the following:</p>
+
+<ul>
+	<li>ftp:// <i>(plain FTP)</i></li>
+	<li>ftps:// <i>(encrypted FTP)</i></li>
+	<li>sftp:// <i>(secure shell file transfer)</i>
+</ul>
+
+<p>Anonymous transfer is not supported, so each site definition must include at least a username. The password field may, however, be left blank. The <b>ftpsync</b> program will then prompt for entry of the password the first time that site is accessed in any session but will discard that information when it exits. Note that if you do enter a password in the site definition then it will be stored on your hard disk, in clear text form - albeit buried within a file format that obscures its purpose.</p>
+
+<p>To define a new site, either click on the 'Settings' button on the toolbar (<img src=':/images/settings.png' width='16' height='16'>) or choose 'Site | New' from the application main menu. Then click the '+' button to create a new site. Here's an example of a site definition:</p>
+
+<p><img src=":/images/options.png"></p>
+
+<p>Note that there is no 'Save' button (and no 'Cancel'). All changes are applied immediately.</p>
+
+<p>Once a site has been defined, you can scan for differences by using the 'Scan' button on the toolbar (<img src=':/images/search.png' width='16' height='16'>) or by choosing 'Scan | Begin' from the main menu. The results will be displayed as a table in the main window. The following icons are used in the table, to indicate file state:</p>
+
+<ul>
+	<li>X - File not found</li>
+	<li>- - File not changed</li>
+	<li><img src=':/images/upload.png' width='16' height='16'> - Local copy has changed but remote has not</li>
+	<li><img src=':/images/download.png' width='16' height='16'> - Remote copy has changed but local has not</li>
+	<li><img src=':/images/conflict.png' width='16' height='16'> - Local and remote copies are different and it's not possible to tell which is 'correct'</li>
+</ul>
+
+<p>Once the report is shown, you can select any line and click the 'View file' button on the toolbar (<img src=':/images/preview.png' width='16' height='16'>). Or just double-click on the desired line. Either method will cause <b>ftpsync</b> to fetch the remote copy and compare it to the local copy, displaying the differences. Only use this for text files such as HTML or scripts; it cannot display the differences in an image file.</p>
+
+<p>Note that the first time a site is scanned, any files that are different will be marked as 'in conflict'. This marking will be kept until either the local copy is uploaded or the remote copy is downloaded, making the files identical. After <b>ftpsync</b> sees that the two copies have the same MD5 fingerprint, it will be able to track which has been changed, relative to the previous state.</p>
