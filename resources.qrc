@@ -1,14 +1,16 @@
 <!DOCTYPE RCC>
 <RCC version="1.0">
+<qresource prefix="/images">
+   <file alias="upload.png"  >res/images/upload.png</file>
+   <file alias="download.png">res/images/download.png</file>
+   <file alias="conflict.png">res/images/conflict.png</file>
+   <file alias="settings.png">res/images/settings.png</file>
+   <file alias="reset.png"   >res/images/reset.png</file>
+   <file alias="search.png"  >res/images/search.png</file>
+   <file alias="preview.png" >res/images/preview.png</file>
+   <file alias="options.png" >res/images/options.png</file>
+</qresource>
 <qresource>
-   <file>images/upload.png</file>
-   <file>images/download.png</file>
-   <file>images/conflict.png</file>
-   <file>images/settings.png</file>
-   <file>images/reset.png</file>
-   <file>images/search.png</file>
-   <file>images/preview.png</file>
-   <file>images/options.png</file>
-	<file>help.html</file>
+	<file alias="help.html"   >res/help.html</file>
 </qresource>
 </RCC>
