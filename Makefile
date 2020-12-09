@@ -26,9 +26,9 @@ windows: ftpsync.syso $(EXE) ftpsync.msi
 $(EXE): $(GO_FILES) $(RESOURCES)
 	qtdeploy build desktop
 
-$(MACICONS): ftpsync.iconset/*
+$(MACICONS): res/ftpsync.iconset/*
 	mkdir -p darwin/Contents/Resources
-	iconutil --convert icns ftpsync.iconset -o $@
+	iconutil --convert icns res/ftpsync.iconset -o $@
 
 $(PLIST): res/info.plist
 	cp $< $@
